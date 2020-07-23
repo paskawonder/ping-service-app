@@ -14,7 +14,7 @@ public final class Application {
 
     public static void main(final String[] args) {
         final Injector injector = Guice.createInjector(new ApplicationConfig());
-        final List<Task> tasks = injector.getInstance(Key.get(new TypeLiteral<>() {}));
+        final List<Task> tasks = injector.getInstance(Key.get(new TypeLiteral<List<Task>>() {}));
         final GlobalExecutor globalExecutor = injector.getInstance(GlobalExecutor.class);
         globalExecutor.execute(tasks);
     }
