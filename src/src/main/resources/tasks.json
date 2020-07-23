@@ -1,0 +1,20 @@
+[
+  {
+    "id": "google.com",
+    "uri": "google.com",
+    "operation": "ICMP_PING",
+    "period": 1000
+  },
+  {
+    "id": "google.com",
+    "uri": "https://google.com2",
+    "operation": "TCP_PING",
+    "period": 1000
+  },
+  {
+    "id": "google.com",
+    "uri": "google.com",
+    "operation": "ROUTE_TRACE",
+    "period": 1000
+  }
+]
