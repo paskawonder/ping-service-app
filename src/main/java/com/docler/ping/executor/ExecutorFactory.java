@@ -29,7 +29,7 @@ public class ExecutorFactory {
         } else if (Operation.ROUTE_TRACE.equals(operation)) {
             executor = routeTraceExecutor;
         } else  {
-            throw new IllegalArgumentException();
+            throw new UnsupportedOperationException();
         }
         return executor;
     }
