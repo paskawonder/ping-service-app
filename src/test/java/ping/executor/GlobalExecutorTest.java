@@ -62,8 +62,8 @@ final class GlobalExecutorTest {
         Mockito.when(executorFactory.getExecutor(Operation.ICMP_PING)).thenReturn(executor);
         Mockito.when(executor.execute(URI)).thenReturn(RESULT_RESULT);
         globalExecutor.execute(tasks);
-        Mockito.verify(dataService, Mockito.timeout(1234).times(1)).persist(ID, Operation.ICMP_PING, new ExecutionResultEntity(0, RESULT_RESULT));
-        Mockito.verify(reportService, Mockito.timeout(1234).times(0)).report(Mockito.anyString());
+        Mockito.verify(dataService, Mockito.timeout(2000).times(1)).persist(ID, Operation.ICMP_PING, new ExecutionResultEntity(0, RESULT_RESULT));
+        Mockito.verify(reportService, Mockito.timeout(2000).times(0)).report(Mockito.anyString());
     }
 
     @Test
