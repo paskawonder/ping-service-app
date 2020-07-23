@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Map;
 
-public final class DataServiceTest {
+final class DataServiceTest {
 
     private static final String URI = "uri";
 
@@ -21,7 +21,7 @@ public final class DataServiceTest {
     private final DataService dataService = new DataService();
 
     @Test
-    public void persistAndGetTest() {
+    void persistAndGetTest() {
         dataService.persist(URI, Operation.ICMP_PING, new ExecutionResultEntity(0, ICMP_PING));
         Map<Operation, ExecutionResultEntity> expected = Map.of(Operation.ICMP_PING, new ExecutionResultEntity(0, ICMP_PING));
         Map<Operation, ExecutionResultEntity> actual = dataService.get(URI);

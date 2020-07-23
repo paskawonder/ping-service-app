@@ -1,6 +1,8 @@
 package com.docler.ping.report;
 
 import com.docler.ping.model.Report;
+import javax.inject.Inject;
+import javax.inject.Named;
 import lombok.SneakyThrows;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -13,13 +15,14 @@ import java.time.Duration;
 
 public class ReportClient {
 
-    private static final Logger LOG = LogManager.getLogger(ReportService.class);
+    private static final Logger LOG = LogManager.getLogger(ReportClient.class);
 
     private final HttpClient httpClient;
 
     private final URI uri;
 
-    public ReportClient(final String baseUri, final long timeout) {
+    @Inject
+    public ReportClient(@Named("report.uri") final String baseUri, @Named("report.timeout") final long timeout) {
         this.httpClient = HttpClient.newBuilder().version(HttpClient.Version.HTTP_1_1).connectTimeout(Duration.ofSeconds(timeout)).build();
         this.uri = URI.create(baseUri);
     }

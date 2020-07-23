@@ -12,7 +12,7 @@ import org.mockito.Mockito;
 
 import java.util.Map;
 
-public final class ReportServiceTest {
+final class ReportServiceTest {
 
     private static final String URI = "uri";
 
@@ -30,7 +30,7 @@ public final class ReportServiceTest {
 
     private final ExecutionResultEntityReportConverter executionResultEntityReportConverter;
 
-    public ReportServiceTest() {
+    ReportServiceTest() {
         this.dataService = Mockito.mock(DataService.class);
         this.reportClient = Mockito.mock(ReportClient.class);
         this.executionResultEntityReportConverter = Mockito.mock(ExecutionResultEntityReportConverter.class);
@@ -38,7 +38,7 @@ public final class ReportServiceTest {
     }
 
     @Test
-    public void report() {
+    void report() {
         final long timestamp = System.currentTimeMillis();
         final Map<Operation, ExecutionResultEntity> data = Map.of(
                 Operation.ICMP_PING, new ExecutionResultEntity(timestamp, ICMP_PING),

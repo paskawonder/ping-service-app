@@ -1,37 +1,25 @@
 package com.docler.ping.executor;
 
-import lombok.SneakyThrows;
-
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
+import com.docler.ping.utils.ExternalExecutionHelper;
+import javax.inject.Inject;
+import javax.inject.Named;
 
 public class RouteTraceExecutor implements Executor {
 
-    private static final String LINE_SEPARATOR = System.lineSeparator();
-
     private final String command;
 
-    private final Runtime runtime;
+    private final ExternalExecutionHelper externalExecutionHelper;
 
-    public RouteTraceExecutor(final String command, final Runtime runtime) {
+    @Inject
+    public RouteTraceExecutor(@Named("route.trace.command") final String command,
+                              final ExternalExecutionHelper externalExecutionHelper) {
         this.command = command + " ";
-        this.runtime = runtime;
+        this.externalExecutionHelper = externalExecutionHelper;
     }
 
-    @SneakyThrows
     @Override
     public String execute(final String uri) {
-        final String pingCmd = command + uri;
-        final Process process = runtime.exec(pingCmd);
-        final StringBuilder pingResult = new StringBuilder();
-        try (final BufferedReader in = new BufferedReader(new InputStreamReader(process.getInputStream()))) {
-            String inputLine;
-            while ((inputLine = in.readLine()) != null) {
-                pingResult.append(inputLine).append(LINE_SEPARATOR);
-            }
-        }
-        pingResult.delete(pingResult.lastIndexOf(LINE_SEPARATOR), pingResult.length());
-        return pingResult.toString().trim();
+        return externalExecutionHelper.exec(command + uri);
     }
 
 }

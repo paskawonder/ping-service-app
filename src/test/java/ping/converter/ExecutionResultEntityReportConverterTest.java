@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 import java.util.Collections;
 import java.util.Map;
 
-public class ExecutionResultEntityReportConverterTest {
+final class ExecutionResultEntityReportConverterTest {
 
     private static final String ID = "id";
 
@@ -23,7 +23,7 @@ public class ExecutionResultEntityReportConverterTest {
     private final ExecutionResultEntityReportConverter subject = new ExecutionResultEntityReportConverter();
 
     @Test
-    public void convertTest() {
+    void convertTest() {
         final long timestamp = System.currentTimeMillis();
         Map<Operation, ExecutionResultEntity> data = Map.of(
                 Operation.ICMP_PING, new ExecutionResultEntity(timestamp, ICMP_PING),

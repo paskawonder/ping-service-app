@@ -4,12 +4,12 @@ import com.docler.ping.utils.Clock;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class ClockTest {
+final class ClockTest {
 
     private final Clock clock = new Clock();
 
     @Test
-    public void timestampTest() {
+    void timestampTest() {
         final long before = System.currentTimeMillis();
         final long now = clock.timestamp();
         Assertions.assertTrue(now >= before);

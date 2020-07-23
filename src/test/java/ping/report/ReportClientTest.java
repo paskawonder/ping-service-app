@@ -13,7 +13,7 @@ import org.junit.jupiter.api.Test;
 
 import static com.github.tomakehurst.wiremock.client.WireMock.aResponse;
 
-public final class ReportClientTest {
+final class ReportClientTest {
 
     private static final String URI = "http://localhost:18081";
 
@@ -27,23 +27,23 @@ public final class ReportClientTest {
 
     private final WireMockServer wireMockServer;
 
-    public ReportClientTest() {
+    ReportClientTest() {
         this.reportClient = new ReportClient(URI, 1000);
         this.wireMockServer = new WireMockServer(WireMockConfiguration.options().port(18081));
     }
 
     @BeforeEach
-    public void init() {
+    void init() {
         this.wireMockServer.start();
     }
 
     @AfterEach
-    public void tearDown() {
+    void tearDown() {
         this.wireMockServer.stop();
     }
 
     @Test
-    public void submitTest() {
+    void submitTest() {
         final Report report = new Report(URI, ICMP_PING, TCP_PING, TRACE);
         wireMockServer.stubFor(WireMock.post("/").willReturn(aResponse().withStatus(200)));
         reportClient.submit(report);
@@ -54,7 +54,7 @@ public final class ReportClientTest {
     }
 
     @Test
-    public void submitTest_error() {
+    void submitTest_error() {
         final Report report = new Report(URI, ICMP_PING, TCP_PING, TRACE);
         wireMockServer.stubFor(WireMock.post("/").willReturn(aResponse().withFault(Fault.EMPTY_RESPONSE)));
         reportClient.submit(report);

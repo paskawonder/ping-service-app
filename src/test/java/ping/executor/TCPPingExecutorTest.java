@@ -15,7 +15,7 @@ import java.io.IOException;
 import static com.github.tomakehurst.wiremock.client.WireMock.aResponse;
 import static com.github.tomakehurst.wiremock.client.WireMock.okJson;
 
-public final class TCPPingExecutorTest {
+final class TCPPingExecutorTest {
 
     private static final String URI = "http://localhost:18081";
 
@@ -23,23 +23,23 @@ public final class TCPPingExecutorTest {
 
     private final WireMockServer wireMockServer;
 
-    public TCPPingExecutorTest() {
+    TCPPingExecutorTest() {
         this.tcpPingExecutor = new TCPPingExecutor(1000);
         this.wireMockServer = new WireMockServer(WireMockConfiguration.options().port(18081));
     }
 
     @BeforeEach
-    public void init() {
+    void init() {
         wireMockServer.start();
     }
 
     @AfterEach
-    public void tearDown() {
+    void tearDown() {
         wireMockServer.stop();
     }
 
     @Test
-    public void executeTest_200() {
+    void executeTest_200() {
         wireMockServer.stubFor(WireMock.get("/").willReturn(okJson("").withStatus(200).withFixedDelay(500)));
         final String actual = tcpPingExecutor.execute(URI);
         Assertions.assertTrue(actual.contains("{\"url\":\"http://localhost:18081\","));
@@ -47,7 +47,7 @@ public final class TCPPingExecutorTest {
     }
 
     @Test
-    public void executeTest_500() {
+    void executeTest_500() {
         wireMockServer.stubFor(WireMock.get("/").willReturn(aResponse().withStatus(500).withFixedDelay(500)));
         final String actual = tcpPingExecutor.execute(URI);
         Assertions.assertTrue(actual.contains("{\"url\":\"http://localhost:18081\","));
@@ -56,7 +56,7 @@ public final class TCPPingExecutorTest {
     }
 
     @Test
-    public void executeTest_error() {
+    void executeTest_error() {
         wireMockServer.stubFor(WireMock.get("/").willReturn(aResponse().withFault(Fault.EMPTY_RESPONSE)));
         Assertions.assertThrows(IOException.class, () -> tcpPingExecutor.execute(URI));
     }

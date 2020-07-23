@@ -14,7 +14,7 @@ import org.mockito.Mockito;
 
 import java.util.List;
 
-public final class GlobalExecutorTest {
+final class GlobalExecutorTest {
 
     private static final String ID = "google.com";
 
@@ -30,7 +30,7 @@ public final class GlobalExecutorTest {
 
     private final GlobalExecutor globalExecutor;
 
-    public GlobalExecutorTest() {
+    GlobalExecutorTest() {
         this.executorFactory = Mockito.mock(ExecutorFactory.class);
         this.dataService = Mockito.mock(DataService.class);
         this.reportService = Mockito.mock(ReportService.class);
@@ -40,7 +40,7 @@ public final class GlobalExecutorTest {
     }
 
     @Test
-    public void executeTest() throws InterruptedException {
+    void executeTest() throws InterruptedException {
         final List<Task> tasks = List.of(
                 new Task(ID, URI, Operation.ICMP_PING, 1000)
         );
@@ -55,7 +55,7 @@ public final class GlobalExecutorTest {
     }
 
     @Test
-    public void executeTest_skipping() throws InterruptedException {
+    void executeTest_skipping() throws InterruptedException {
         final List<Task> tasks = List.of(
                 new Task(ID, URI, Operation.ICMP_PING, 98765),
                 new Task(ID, URI, Operation.ICMP_PING, 98765)
@@ -70,7 +70,7 @@ public final class GlobalExecutorTest {
     }
 
     @Test
-    public void executeTest_report() throws InterruptedException {
+    void executeTest_report() throws InterruptedException {
         final List<Task> tasks = List.of(
                 new Task(ID, URI, Operation.ICMP_PING, 1000)
         );

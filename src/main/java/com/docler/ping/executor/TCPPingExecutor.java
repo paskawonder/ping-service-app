@@ -1,5 +1,7 @@
 package com.docler.ping.executor;
 
+import javax.inject.Inject;
+import javax.inject.Named;
 import lombok.AllArgsConstructor;
 import lombok.SneakyThrows;
 
@@ -14,7 +16,8 @@ public class TCPPingExecutor implements Executor {
 
     private final HttpClient httpClient;
 
-    public TCPPingExecutor(final long timeout) {
+    @Inject
+    public TCPPingExecutor(@Named("ping.tcp.timeout") final long timeout) {
         this.httpClient = HttpClient.newBuilder().version(HttpClient.Version.HTTP_1_1).connectTimeout(Duration.ofSeconds(timeout)).build();
     }
 
