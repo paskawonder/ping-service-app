@@ -11,12 +11,12 @@
     <packaging>jar</packaging>
 
     <properties>
-        <java.version>13</java.version>
+        <java.version>11</java.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <log4j.version>2.13.3</log4j.version>
         <mockito.version>3.3.0</mockito.version>
-        <sonar.projectKey>paskawonder_ping-app</sonar.projectKey>
+        <sonar.projectKey>paskawonder_ping-service-app</sonar.projectKey>
         <sonar.organization>paskawonder</sonar.organization>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
     </properties>
