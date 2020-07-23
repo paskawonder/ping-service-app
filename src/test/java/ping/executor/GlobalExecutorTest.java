@@ -1,18 +1,17 @@
 package ping.executor;
 
-import com.docler.ping.executor.GlobalExecutor;
 import com.docler.ping.data.DataService;
 import com.docler.ping.executor.Executor;
 import com.docler.ping.executor.ExecutorFactory;
+import com.docler.ping.executor.GlobalExecutor;
 import com.docler.ping.model.ExecutionResultEntity;
 import com.docler.ping.model.Operation;
 import com.docler.ping.model.Task;
 import com.docler.ping.report.ReportService;
 import com.docler.ping.utils.Clock;
+import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
-
-import java.util.List;
 
 final class GlobalExecutorTest {
 
@@ -40,7 +39,7 @@ final class GlobalExecutorTest {
     }
 
     @Test
-    void executeTest() throws InterruptedException {
+    void executeTest() {
         final List<Task> tasks = List.of(
                 new Task(ID, URI, Operation.ICMP_PING, 1000)
         );
@@ -49,13 +48,12 @@ final class GlobalExecutorTest {
         Mockito.when(executorFactory.getExecutor(Operation.TCP_PING)).thenReturn(executor);
         Mockito.when(executor.execute(URI)).thenReturn(RESULT_RESULT);
         globalExecutor.execute(tasks);
-        Thread.sleep(500);
-        Mockito.verify(dataService, Mockito.times(1)).persist(ID, Operation.ICMP_PING, new ExecutionResultEntity(0, RESULT_RESULT));
-        Mockito.verify(reportService, Mockito.times(0)).report(Mockito.anyString());
+        Mockito.verify(dataService, Mockito.timeout(500).times(1)).persist(ID, Operation.ICMP_PING, new ExecutionResultEntity(0, RESULT_RESULT));
+        Mockito.verify(reportService, Mockito.timeout(500).times(0)).report(Mockito.anyString());
     }
 
     @Test
-    void executeTest_skipping() throws InterruptedException {
+    void executeTest_skipping() {
         final List<Task> tasks = List.of(
                 new Task(ID, URI, Operation.ICMP_PING, 98765),
                 new Task(ID, URI, Operation.ICMP_PING, 98765)
@@ -64,13 +62,12 @@ final class GlobalExecutorTest {
         Mockito.when(executorFactory.getExecutor(Operation.ICMP_PING)).thenReturn(executor);
         Mockito.when(executor.execute(URI)).thenReturn(RESULT_RESULT);
         globalExecutor.execute(tasks);
-        Thread.sleep(1234);
-        Mockito.verify(dataService, Mockito.times(1)).persist(ID, Operation.ICMP_PING, new ExecutionResultEntity(0, RESULT_RESULT));
-        Mockito.verify(reportService, Mockito.times(0)).report(Mockito.anyString());
+        Mockito.verify(dataService, Mockito.timeout(1234).times(1)).persist(ID, Operation.ICMP_PING, new ExecutionResultEntity(0, RESULT_RESULT));
+        Mockito.verify(reportService, Mockito.timeout(1234).times(0)).report(Mockito.anyString());
     }
 
     @Test
-    void executeTest_report() throws InterruptedException {
+    void executeTest_report() {
         final List<Task> tasks = List.of(
                 new Task(ID, URI, Operation.ICMP_PING, 1000)
         );
@@ -80,9 +77,8 @@ final class GlobalExecutorTest {
         Mockito.when(executorFactory.getExecutor(Operation.ROUTE_TRACE)).thenReturn(executor);
         Mockito.when(executor.execute(URI)).thenThrow(RuntimeException.class);
         globalExecutor.execute(tasks);
-        Thread.sleep(500);
-        Mockito.verify(dataService, Mockito.times(0)).persist(Mockito.anyString(), Mockito.any(Operation.class), Mockito.any(ExecutionResultEntity.class));
-        Mockito.verify(reportService, Mockito.times(1)).report(ID);
+        Mockito.verify(dataService, Mockito.timeout(500).times(0)).persist(Mockito.anyString(), Mockito.any(Operation.class), Mockito.any(ExecutionResultEntity.class));
+        Mockito.verify(reportService, Mockito.timeout(500).times(1)).report(ID);
     }
 
 }

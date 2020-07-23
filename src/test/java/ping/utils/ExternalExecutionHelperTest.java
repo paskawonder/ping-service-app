@@ -24,7 +24,7 @@ final class ExternalExecutionHelperTest {
     }
 
     @Test
-    public void executeTest() throws IOException {
+    void executeTest() throws IOException {
         final Process process = Mockito.mock(Process.class);
         Mockito.when(runtime.exec(COMMAND)).thenReturn(process);
         final ByteArrayInputStream is = new ByteArrayInputStream(StandardCharsets.UTF_8.encode(RESULT_RESULT).array());
@@ -34,7 +34,7 @@ final class ExternalExecutionHelperTest {
     }
 
     @Test
-    public void executeTest_Error() throws IOException {
+    void executeTest_Error() throws IOException {
         Mockito.when(runtime.exec(COMMAND)).thenThrow(RuntimeException.class);
         Assertions.assertThrows(RuntimeException.class, () -> externalExecutionHelper.exec(COMMAND));
     }
