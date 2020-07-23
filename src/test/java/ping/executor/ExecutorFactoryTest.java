@@ -46,8 +46,8 @@ public final class ExecutorFactoryTest {
     }
 
     @Test
-    public void getExecutorTest_unsupported() {
-        Assertions.assertThrows(UnsupportedOperationException.class, () -> executorFactory.getExecutor(null));
+    public void getExecutorTest_illegal() {
+        Assertions.assertThrows(IllegalArgumentException.class, () -> executorFactory.getExecutor(null));
     }
 
 }
