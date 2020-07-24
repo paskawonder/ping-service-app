@@ -9,8 +9,10 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import javax.inject.Inject;
+import javax.inject.Singleton;
 import java.util.Map;
 
+@Singleton
 public class ReportService {
 
     private static final Logger LOG = LogManager.getLogger(ReportService.class);

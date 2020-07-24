@@ -3,11 +3,13 @@ package com.docler.ping.data;
 import com.docler.ping.model.ExecutionResultEntity;
 import com.docler.ping.model.Operation;
 
+import javax.inject.Singleton;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
+@Singleton
 public class DataService {
 
     private final Map<String, Map<Operation, ExecutionResultEntity>> data;

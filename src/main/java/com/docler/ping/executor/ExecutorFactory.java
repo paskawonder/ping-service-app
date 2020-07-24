@@ -3,7 +3,9 @@ package com.docler.ping.executor;
 import com.docler.ping.model.Operation;
 
 import javax.inject.Inject;
+import javax.inject.Singleton;
 
+@Singleton
 public class ExecutorFactory {
 
     private final ICMPPingExecutor icmpPingExecutor;

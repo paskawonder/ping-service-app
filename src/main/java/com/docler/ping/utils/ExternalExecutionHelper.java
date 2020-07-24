@@ -1,10 +1,13 @@
 package com.docler.ping.utils;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import javax.inject.Inject;
 import lombok.SneakyThrows;
 
+import javax.inject.Inject;
+import javax.inject.Singleton;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+
+@Singleton
 public class ExternalExecutionHelper {
 
     private static final String LINE_SEPARATOR = System.lineSeparator();

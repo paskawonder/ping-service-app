@@ -4,9 +4,11 @@ import com.docler.ping.model.ExecutionResultEntity;
 import com.docler.ping.model.Operation;
 import com.docler.ping.model.Report;
 
+import javax.inject.Singleton;
 import java.util.Map;
 import java.util.Optional;
 
+@Singleton
 public class ExecutionResultEntityReportConverter {
 
     public Report convert(final String id, final Map<Operation, ExecutionResultEntity> e) {

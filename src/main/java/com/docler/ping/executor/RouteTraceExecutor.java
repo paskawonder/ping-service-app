@@ -3,7 +3,9 @@ package com.docler.ping.executor;
 import com.docler.ping.utils.ExternalExecutionHelper;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.inject.Singleton;
 
+@Singleton
 public class RouteTraceExecutor implements Executor {
 
     private final String command;

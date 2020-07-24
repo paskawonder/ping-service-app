@@ -1,10 +1,13 @@
 package com.docler.ping.executor;
 
 import com.docler.ping.utils.ExternalExecutionHelper;
-import java.util.stream.Stream;
+
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.inject.Singleton;
+import java.util.stream.Stream;
 
+@Singleton
 public class ICMPPingExecutor implements Executor {
 
     private static final String[] ERROR_MSGS = {"destination host unreachable", "request timed out", "ping request could not find host"};

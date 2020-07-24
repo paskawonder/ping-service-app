@@ -1,10 +1,11 @@
 package com.docler.ping.executor;
 
-import javax.inject.Inject;
-import javax.inject.Named;
 import lombok.AllArgsConstructor;
 import lombok.SneakyThrows;
 
+import javax.inject.Inject;
+import javax.inject.Named;
+import javax.inject.Singleton;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
@@ -12,6 +13,7 @@ import java.net.http.HttpResponse;
 import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
+@Singleton
 public class TCPPingExecutor implements Executor {
 
     private final HttpClient httpClient;

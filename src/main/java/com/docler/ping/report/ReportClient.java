@@ -1,18 +1,20 @@
 package com.docler.ping.report;
 
 import com.docler.ping.model.Report;
-import javax.inject.Inject;
-import javax.inject.Named;
 import lombok.SneakyThrows;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import javax.inject.Inject;
+import javax.inject.Named;
+import javax.inject.Singleton;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.Duration;
 
+@Singleton
 public class ReportClient {
 
     private static final Logger LOG = LogManager.getLogger(ReportClient.class);
