@@ -1,19 +1,37 @@
 [
   {
-    "id": "google.com",
-    "uri": "google.com",
+    "id": "jasmin.com",
+    "uri": "jasmin.com",
     "operation": "ICMP_PING",
     "period": 1000
   },
   {
-    "id": "google.com",
-    "uri": "https://google.com2",
+    "id": "jasmin.com",
+    "uri": "https://jasmin.com",
     "operation": "TCP_PING",
     "period": 1000
   },
   {
-    "id": "google.com",
-    "uri": "google.com",
+    "id": "jasmin.com",
+    "uri": "jasmin.com",
+    "operation": "ROUTE_TRACE",
+    "period": 1000
+  },
+  {
+    "id": "oranum.com",
+    "uri": "oranum.com",
+    "operation": "ICMP_PING",
+    "period": 1000
+  },
+  {
+    "id": "oranum.com",
+    "uri": "https://oranum.com",
+    "operation": "TCP_PING",
+    "period": 1000
+  },
+  {
+    "id": "oranum.com",
+    "uri": "oranum.com",
     "operation": "ROUTE_TRACE",
     "period": 1000
   }
