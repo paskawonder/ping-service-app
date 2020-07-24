@@ -2,8 +2,9 @@ package com.docler.ping.data;
 
 import com.docler.ping.model.ExecutionResultEntity;
 import com.docler.ping.model.Operation;
+
 import java.util.Collections;
-import java.util.EnumMap;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -21,7 +22,7 @@ public class DataService {
     }
 
     public Map<Operation, ExecutionResultEntity> get(final String id) {
-        return new EnumMap<>(data.getOrDefault(id, Collections.emptyMap()));
+        return new HashMap<>(data.getOrDefault(id, Collections.emptyMap()));
     }
 
 }

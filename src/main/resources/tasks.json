@@ -1,38 +1,38 @@
 [
   {
-    "id": "jasmin.com",
-    "uri": "jasmin.com",
+    "id": "pp.au",
+    "uri": "pp.au",
     "operation": "ICMP_PING",
-    "period": 1000
+    "period": 5000
   },
   {
-    "id": "jasmin.com",
-    "uri": "https://jasmin.com",
+    "id": "pp.au",
+    "uri": "https://pp.au",
     "operation": "TCP_PING",
-    "period": 1000
+    "period": 5000
   },
   {
-    "id": "jasmin.com",
-    "uri": "jasmin.com",
+    "id": "pp.au",
+    "uri": "pp.au",
     "operation": "ROUTE_TRACE",
-    "period": 1000
+    "period": 5000
   },
   {
-    "id": "oranum.com",
-    "uri": "oranum.com",
+    "id": "pp.au",
+    "uri": "pp.au",
     "operation": "ICMP_PING",
-    "period": 1000
+    "period": 5000
   },
   {
-    "id": "oranum.com",
-    "uri": "https://oranum.com",
+    "id": "pp.au",
+    "uri": "https://pp.au",
     "operation": "TCP_PING",
-    "period": 1000
+    "period": 5000
   },
   {
-    "id": "oranum.com",
-    "uri": "oranum.com",
+    "id": "pp.au",
+    "uri": "pp.au",
     "operation": "ROUTE_TRACE",
-    "period": 1000
+    "period": 5000
   }
 ]
