@@ -21,6 +21,7 @@ public class DataService {
         data.get(id).put(operation, result);
     }
 
+    @SuppressWarnings("java:S1640")
     public Map<Operation, ExecutionResultEntity> get(final String id) {
         return new HashMap<>(data.getOrDefault(id, Collections.emptyMap()));
     }
