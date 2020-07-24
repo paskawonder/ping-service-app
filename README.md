@@ -6,6 +6,8 @@ Prerequisites: Oracle JDK 11.0.6 & Maven
 
 Tech stack: Oracle JDK 11.0.6
 
+Run: mvn package; java -jar target/ping-service-app-1.0-SNAPSHOT.jar
+
 Application properties are defined in the application.properties, tasks are listed in src/main/resources/tasks.json as well as logging is configured in src/main/resources/log4j2.xml
 
 The scheudling is done with a help of https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/concurrent/ScheduledExecutorService.html#scheduleAtFixedRate(java.lang.Runnable,long,long,java.util.concurrent.TimeUnit)
